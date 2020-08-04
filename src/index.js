@@ -4,10 +4,10 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
-//app.use(bodyParser.json);
-//app.use(bodyParser.urlencoded({ extended: false }));
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+const jsonParser = bodyParser.json;
 
-app.get("/", (req, res) => {
+app.get("/", urlEncodedParser, (req, res) => {
   console.log("method~> ", req.method);
   res.send("test");
 });
